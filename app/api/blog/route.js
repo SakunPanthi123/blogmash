@@ -11,7 +11,7 @@ export const GET =  async (req) => {
         })
 
     }   catch (e){
-        return new Response(JSON.stringify(e),{
+        return new Response('An error occured',{
             status:500
         })
     }
