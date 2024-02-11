@@ -7,7 +7,8 @@ const Update = () => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const searchParams = useSearchParams()
-    const blogid = searchParams.get('id')
+    var blogid = 'asdfsd'
+    blogid = searchParams.get('id')
 
     useEffect(() => {
         const fetchPost = async () => {
