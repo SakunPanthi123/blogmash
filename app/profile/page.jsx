@@ -46,7 +46,7 @@ const Profile = () => {
           </h1>
       </div>
     
-      <form onSubmit={handleSubmit} className="max-w-md max-h-md mx-auto pt-14">
+      <form onSubmit={handleSubmit} className="max-w-2xl md:max-w-md max-h-md mx-auto pt-14">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
             Blog Title:
