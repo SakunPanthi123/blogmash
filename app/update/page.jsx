@@ -1,11 +1,6 @@
-// This page handles updating of the blog, firstly it GETs the blog from the database, fill the form with the blog data, then PATCH the blog with the new data. then routes back to home page.
-
-// Code:
-
 'use client'
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 const Update = () => {
     const router = useRouter()
