@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react'
 const Home = () => {
   const [blogs,setBlogs] = useState([])
   
+// this portion is good?
   useEffect(() => {
     const fetchPost = async () => {
       const response = await fetch('/api/blog')
