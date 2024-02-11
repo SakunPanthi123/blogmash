@@ -1,16 +1,17 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useRouter } from 'next/navigation'
+import UpdateContext from '@components/UpdateProvider'
 
 const Update = () => {
     const router = useRouter()
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
-    const blogid = 'gvhbjknmjnhigbjhnjkuih'
-
+    const {update_query, updateQuery} = useContext(UpdateContext)
+    console.log(update_query)
     useEffect(() => {
         const fetchPost = async () => {
-            const response = await fetch(`/api/blog/${blogid}`)
+            const response = await fetch(`/api/blog/${update_query}`)
             const data = await response.json()
             setTitle(data.title)
             setContent(data.content)
@@ -19,7 +20,7 @@ const Update = () => {
     }, [])
 
     const handleSubmit = async () => {
-            const response = await fetch(`/api/blog/${blogid}`, {
+            const response = await fetch(`/api/blog/${update_query}`, {
             method: "PATCH",
 
             body: JSON.stringify(

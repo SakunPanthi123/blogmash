@@ -1,10 +1,12 @@
 'use client'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import {useRouter} from 'next/navigation'
+import UpdateContext from '@components/UpdateProvider'
 
 const Home = () => {
   const [blogs,setBlogs] = useState([])
   const router = useRouter()
+  const {update_query, updateQuery} = useContext(UpdateContext)
   
   useEffect(() => {
     const fetchPost = async () => {
@@ -52,7 +54,9 @@ const Home = () => {
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4 mt-4"
             onClick={
               ()=>{
-                router.push(`/update?id=${blog._id.toString()}`)
+                updateQuery(blog._id)
+                router.push('/update')
+
               }
             }
             >
