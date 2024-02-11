@@ -38,8 +38,15 @@ const Profile = () => {
   }
 
   return (
-    <div className='min-h-screen'>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto pt-14">
+    <div className=''>
+            <div>
+        <h1 className='text-2xl font-bold text-center mt-16'>
+        Add a New blog and share it to the world
+
+          </h1>
+      </div>
+    
+      <form onSubmit={handleSubmit} className="max-w-md max-h-md mx-auto pt-14">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
             Blog Title:

@@ -9,7 +9,7 @@ const BlogSchema = new Schema({
         type: String,
         required: [true, 'Content is required!'],
         
-      },
+      }
 })
 
 const Blog = models.Blog || model("Blog", BlogSchema);

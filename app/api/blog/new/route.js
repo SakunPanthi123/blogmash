@@ -10,7 +10,6 @@ export const POST = async (req) => {
         const newBlog = new Blog({
             title: title, 
             content:content,
-            
         })
 
         await newBlog.save()
