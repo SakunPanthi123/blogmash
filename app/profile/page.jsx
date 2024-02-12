@@ -25,7 +25,8 @@ const Profile = () => {
         method: 'POST',
         body: JSON.stringify({
           title: title,
-          content: content
+          content: content,
+          creator: username
         })
       })
 

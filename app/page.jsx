@@ -1,10 +1,12 @@
 'use client'
 import {useState, useEffect, useContext} from 'react'
 import Link from 'next/link'
+import moment from 'moment'
+import SessionContext from '@components/SessionProvider'
 
 const Home = () => {
   const [blogs,setBlogs] = useState([])
-
+  const {username} = useContext(SessionContext)
   
   useEffect(() => {
     const fetchPost = async () => {
@@ -20,12 +22,20 @@ const Home = () => {
 
     <div className='px-8'>
       {blogs.map((blog) => {
+        const formattedDate = moment(blog.createdAt).format('MMMM Do YYYY, h:mm:ss a');
+
         return (
           <div key={blog._id} className="mt-8 max-w-2xl mx-auto bg-gray-100 rounded-lg p-4 shadow-md">
             <h1 className="text-2xl font-bold mb-2">{blog.title}</h1>
+            <p className="text-gray-700 font-semibold text-sm">Written on: {formattedDate}</p>
+            <p className="text-gray-700 font-semibold text-sm">Written By: {blog.createdBy}</p>
+            <br></br>
             <p className="text-gray-700">{blog.content}</p>
-          <button 
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          {
+            username === blog.createdBy ?
+          <div> 
+            <button 
+            className=" hover:text-red-700 text-red-300 font-bold mt-4"
             onClick={async () => {
               const conf = confirm('Are you sure you want to delete this blog?')
               if(conf){
@@ -40,9 +50,7 @@ const Home = () => {
                 const newBlogs = blogs.filter((item) => item._id !== blog._id)
                 setBlogs(newBlogs)
               }
-            } else {
-              return
-            }
+            } 
             }}
           >
             Delete
@@ -54,6 +62,9 @@ const Home = () => {
             >
             Update
             </Link>
+          </div>:<div></div>
+          }
+
           </div>
         )
       })}
