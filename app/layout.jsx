@@ -2,19 +2,19 @@
 import { useState } from 'react'
 import Nav from '@components/Nav'
 import '@styles/global.css'
-import UpdateContext from '@components/UpdateProvider'
+import SessionContext from '@components/SessionProvider'
 
 const RootLayout = ({ children }) => {
-  const [update_query, updateQuery] = useState('')
+  const [username, updateName] = useState()
   return (
-    <UpdateContext.Provider value={{ update_query, updateQuery }}>
+    <SessionContext.Provider value={{ username, updateName }}>
       <html>
         <body>
           <Nav />
           {children}
         </body>
       </html>
-    </UpdateContext.Provider>
+    </SessionContext.Provider>
   )
 }
 

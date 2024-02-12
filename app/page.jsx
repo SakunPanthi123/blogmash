@@ -1,12 +1,10 @@
 'use client'
 import {useState, useEffect, useContext} from 'react'
-import {useRouter} from 'next/navigation'
-import UpdateContext from '@components/UpdateProvider'
+import Link from 'next/link'
 
 const Home = () => {
   const [blogs,setBlogs] = useState([])
-  const router = useRouter()
-  const {update_query, updateQuery} = useContext(UpdateContext)
+
   
   useEffect(() => {
     const fetchPost = async () => {
@@ -50,18 +48,12 @@ const Home = () => {
             Delete
             </button>
 
-            <button 
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4 mt-4"
-            onClick={
-              ()=>{
-                updateQuery(blog._id)
-                router.push('/update')
-
-              }
-            }
+            <Link 
+            href={`/update/${blog._id}`}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4 mt-4"  
             >
             Update
-            </button>
+            </Link>
           </div>
         )
       })}
