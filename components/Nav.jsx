@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import {useContext} from 'react'
 import SessionContext from './SessionProvider'
+import {useRouter} from 'next/navigation'
 
 const Nav = () => {
-  const {username} = useContext(SessionContext)
+  const router = useRouter()
+  const {username, updateName} = useContext(SessionContext)
   return (
     <nav className="bg-gray-800 w-full fixed top-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,12 +26,28 @@ const Nav = () => {
             </Link>
             {
               username ?
+              <div>
             <Link
               href="/profile"
               className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               My Profile
-            </Link>: <Link
+            </Link>
+            <button
+              className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              onClick={
+                ()=>{
+                  const confirm = window.confirm('Are you sure you want to logout?')
+                  if(confirm){
+                    updateName('')
+                    router.push('/login')
+                }
+              }
+            }
+            >Logout</button>
+            </div>
+            
+            : <Link
               href="/login"
               className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >

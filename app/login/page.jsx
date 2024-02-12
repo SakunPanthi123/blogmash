@@ -32,7 +32,7 @@ const Login = () => {
     }
 
     return (
-        <div className='max-w-md mx-auto mt-16'>
+        <div className='max-w-md mx-auto mt-64'>
             <div className="mb-4">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                     Username:
