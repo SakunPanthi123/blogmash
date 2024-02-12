@@ -1,11 +1,14 @@
 // this is the login page for the app containing username and password only for now
 
 'use client'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useRouter } from 'next/navigation'
+import SessionContext from '@components/SessionProvider'
 import Link from 'next/link'
 
 const Login = () => {
+    const { updateName } = useContext(SessionContext)
+
     const router = useRouter()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -20,6 +23,7 @@ const Login = () => {
         })
 
         if (response.ok) {
+            updateName(username)
             router.push('/')
         }
         else{

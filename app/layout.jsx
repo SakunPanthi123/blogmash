@@ -5,12 +5,12 @@ import '@styles/global.css'
 import SessionContext from '@components/SessionProvider'
 
 const RootLayout = ({ children }) => {
-  const [username, updateName] = useState()
+  const [username, updateName] = useState('')
   return (
     <SessionContext.Provider value={{ username, updateName }}>
       <html>
-        <body>
-          <Nav />
+      <Nav />
+        <body className='mt-24'>
           {children}
         </body>
       </html>
